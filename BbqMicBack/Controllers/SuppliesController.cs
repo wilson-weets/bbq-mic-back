@@ -16,27 +16,25 @@ namespace BbqMicBack.Controllers
     public class SuppliesController : ApiController
     {
         private BBQontext db = new BBQontext();
-
-        // GET: api/Supplies/{slackId}
+        
         public List<Supply> GetSupplies(string slackId)
         {
             return db.Supplies.Where(s => s.SlackId.Equals(slackId)).ToList();
         }
-
-        // PUT: api/Supplies/5
+        
         [ResponseType(typeof(Supply))]
-        public IHttpActionResult PutSupply(string slackId, int productId, int quantity)
+        public IHttpActionResult PutSupply(Supply supply)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var supp = db.Supplies.FirstOrDefault(s => s.SlackId.Equals(slackId) && s.Product.Id == productId);
+            var supp = db.Supplies.FirstOrDefault(s => s.SlackId.Equals(supply.SlackId) && s.Product.Id == supply.Product.Id);
 
             if(supp != null)
             {
-                supp.Quantity = quantity;
+                supp.Quantity = supply.Quantity;
                 db.SaveChanges();
                 return Ok(supp);
             }
@@ -44,35 +42,31 @@ namespace BbqMicBack.Controllers
             return NotFound();
         }
 
-        // POST: api/Supplies
         [ResponseType(typeof(Supply))]
-        public IHttpActionResult PostSupply(string slackId, int productId, int quantity)
+        public IHttpActionResult PostSupply(Supply supply)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var supp = db.Supplies.FirstOrDefault(s => s.SlackId.Equals(slackId) && s.Product.Id == productId);
+            var supp = db.Supplies.FirstOrDefault(s => s.SlackId.Equals(supply.SlackId) && s.Product.Id == supply.Product.Id);
 
             if (supp == null)
             {
-                db.Supplies.Add(supp);
+                var newSupp = db.Supplies.Add(supp);
                 db.SaveChanges();
 
-                var id = db.Supplies.FirstOrDefault(s => s.SlackId.Equals(slackId) && s.Product.Id == productId).Id;
-
-                return CreatedAtRoute("api/Supplies", new { slackId = supp.SlackId, productId = supp.Product.Id, quantity = supp.Quantity }, supp);
+                return CreatedAtRoute("api/Supplies", new { supply = supp }, newSupp);
             }
 
             return StatusCode(HttpStatusCode.Found);
         }
-
-        // DELETE: api/Supplies/5
+        
         [ResponseType(typeof(Supply))]
-        public IHttpActionResult DeleteSupply(string slackId, int productId)
+        public IHttpActionResult DeleteSupply(Supply supply)
         {
-            var supp = db.Supplies.FirstOrDefault(s => s.SlackId.Equals(slackId) && s.Product.Id == productId);
+            var supp = db.Supplies.FirstOrDefault(s => s.SlackId.Equals(supply.SlackId) && s.Product.Id == supply.Product.Id);
             if (supp == null)
             {
                 return NotFound();
