@@ -5,16 +5,21 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace BbqMicBack.Controllers
 {
+    [RoutePrefix("api/TotalQuantity")]
     public class TotalQuantityController : ApiController
     {
         BBQontext db = new BBQontext();
 
-        public int GetTotalQuantity(int productId)
+        [HttpGet]
+        [Route("{productId}")]
+        [ResponseType(typeof(int))]
+        public IHttpActionResult GetTotalQuantity(string productId)
         {
-            return db.Supplies.Where(s => s.Product.Id.Equals(productId)).Count();
+            return Ok(db.Supplies.Where(s => s.Product.Id.Equals(int.Parse(productId))).Count());
         }
     }
 }
