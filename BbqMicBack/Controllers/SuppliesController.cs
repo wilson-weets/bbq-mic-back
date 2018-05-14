@@ -63,7 +63,7 @@ namespace BbqMicBack.Controllers
             return StatusCode(HttpStatusCode.Found);
         }
         
-        [ResponseType(typeof(Supply))]
+        [ResponseType(typeof(bool))]
         public IHttpActionResult DeleteSupply(Supply supply)
         {
             var supp = db.Supplies.FirstOrDefault(s => s.SlackId.Equals(supply.SlackId) && s.Product.Id == supply.Product.Id);
@@ -75,7 +75,11 @@ namespace BbqMicBack.Controllers
             db.Supplies.Remove(supp);
             db.SaveChanges();
 
-            return Ok(supp);
+            supp = db.Supplies.FirstOrDefault(s => s.SlackId.Equals(supply.SlackId) && s.Product.Id == supply.Product.Id);
+            if (supp != null)
+                return Ok(false);
+
+            return Ok(true);
         }
 
         protected override void Dispose(bool disposing)
@@ -85,11 +89,6 @@ namespace BbqMicBack.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        private bool SupplyExists(int id)
-        {
-            return db.Supplies.Count(e => e.Id == id) > 0;
         }
     }
 }

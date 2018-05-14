@@ -114,6 +114,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\SuppliesController.cs" />
     <Compile Include="Controllers\TotalQuantityController.cs" />
     <Compile Include="DAL\BBQontext.cs" />
