@@ -5,11 +5,10 @@ using System.Web;
 
 namespace BbqMicBack.Models
 {
-    public class Supply
+    public class SupplyVM
     {
-        public int Id { get; set; }
         public string SlackId { get; set; }
-        public virtual Product Product { get; set; }
+        public int ProductId { get; set; }
         public int Quantity { get; set; }
     }
 }

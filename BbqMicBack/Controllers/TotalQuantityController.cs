@@ -17,9 +17,9 @@ namespace BbqMicBack.Controllers
         [HttpGet]
         [Route("{productId}")]
         [ResponseType(typeof(int))]
-        public IHttpActionResult GetTotalQuantity(string productId)
+        public IHttpActionResult GetTotalQuantity(int productId)
         {
-            return Ok(db.Supplies.Where(s => s.Product.Id.Equals(int.Parse(productId))).Count());
+            return Ok(db.Supplies.Where(s => s.Product.Id.Equals(productId)).Count());
         }
     }
 }

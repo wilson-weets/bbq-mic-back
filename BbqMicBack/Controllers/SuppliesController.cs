@@ -23,14 +23,16 @@ namespace BbqMicBack.Controllers
         }
         
         [ResponseType(typeof(Supply))]
-        public IHttpActionResult PutSupply(Supply supply)
+        public IHttpActionResult PutSupply(SupplyVM supply)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            Supply supp = null;
 
-            var supp = db.Supplies.FirstOrDefault(s => s.SlackId.Equals(supply.SlackId) && s.Product.Id == supply.Product.Id);
+            if (db.Supplies.Any())
+                supp = db.Supplies.FirstOrDefault(s => s.SlackId.Equals(supply.SlackId) && s.Product.Id == supply.ProductId);
 
             if(supp != null)
             {
@@ -43,30 +45,46 @@ namespace BbqMicBack.Controllers
         }
 
         [ResponseType(typeof(Supply))]
-        public IHttpActionResult PostSupply(Supply supply)
+        public IHttpActionResult PostSupply(SupplyVM supply)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            Supply supp = null;
 
-            var supp = db.Supplies.FirstOrDefault(s => s.SlackId.Equals(supply.SlackId) && s.Product.Id == supply.Product.Id);
+            if (db.Supplies.Any())
+                supp = db.Supplies.FirstOrDefault(s => s.SlackId.Equals(supply.SlackId) && s.Product.Id == supply.ProductId);
 
             if (supp == null)
             {
-                var newSupp = db.Supplies.Add(supp);
-                db.SaveChanges();
+                var prod = db.Needs.FirstOrDefault(n => n.Id == supply.ProductId);
+                if(prod != null)
+                {
+                    supp = new Supply
+                    {
+                        SlackId = supply.SlackId,
+                        Product = prod,
+                        Quantity = supply.Quantity
+                    };
+                    var newSupp = db.Supplies.Add(supp);
+                    db.SaveChanges();
 
-                return CreatedAtRoute("api/Supplies", new { supply = supp }, newSupp);
+                    return Ok(newSupp);
+                }
+                else
+                {
+                    return StatusCode(HttpStatusCode.NotFound);
+                }
             }
 
             return StatusCode(HttpStatusCode.Found);
         }
         
         [ResponseType(typeof(bool))]
-        public IHttpActionResult DeleteSupply(Supply supply)
+        public IHttpActionResult DeleteSupply(SupplyVM supply)
         {
-            var supp = db.Supplies.FirstOrDefault(s => s.SlackId.Equals(supply.SlackId) && s.Product.Id == supply.Product.Id);
+            var supp = db.Supplies.FirstOrDefault(s => s.SlackId.Equals(supply.SlackId) && s.Product.Id == supply.ProductId);
             if (supp == null)
             {
                 return NotFound();
@@ -75,7 +93,7 @@ namespace BbqMicBack.Controllers
             db.Supplies.Remove(supp);
             db.SaveChanges();
 
-            supp = db.Supplies.FirstOrDefault(s => s.SlackId.Equals(supply.SlackId) && s.Product.Id == supply.Product.Id);
+            supp = db.Supplies.FirstOrDefault(s => s.SlackId.Equals(supply.SlackId) && s.Product.Id == supply.ProductId);
             if (supp != null)
                 return Ok(false);
 

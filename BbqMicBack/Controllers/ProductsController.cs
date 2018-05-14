@@ -33,7 +33,7 @@ namespace BbqMicBack.Controllers
             db.Needs.Add(product);
             db.SaveChanges();
 
-            return CreatedAtRoute("api/Products", new { id = product.Id }, product);
+            return Ok(product);
         }
         
         [ResponseType(typeof(bool))]
