@@ -134,6 +134,8 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\mic-bbq - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\mic-bbq - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

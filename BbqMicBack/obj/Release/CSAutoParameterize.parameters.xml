@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="BbqMicBack.DAL.BBQontext-Web.config Connection String" description="BbqMicBack.DAL.BBQontext Connection String used in web.config by the application to access the database." defaultValue="BbqMicBack.DAL.BBQontext_ConnectionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\User\\Source\\Repos\\bbq-mic-back\\BbqMicBack\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='BbqMicBack.DAL.BBQontext']/@connectionString" />
+  </parameter>
+</parameters>
