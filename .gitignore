@@ -6,3 +6,5 @@
 /.vs/BbqMicBack/v15/Server/sqlite3/storage.ide
 /.vs/BbqMicBack/v15/Server/sqlite3/storage.ide-shm
 /.vs/BbqMicBack/v15/Server/sqlite3/storage.ide-wal
+/BbqMicBack/App_Data/BbqMicBack.DAL.BBQontext.mdf
+/BbqMicBack/App_Data/BbqMicBack.DAL.BBQontext_log.ldf
