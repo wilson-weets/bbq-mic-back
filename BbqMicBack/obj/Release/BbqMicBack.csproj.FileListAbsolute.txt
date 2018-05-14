@@ -83,3 +83,6 @@ C:\Users\User\Source\Repos\bbq-mic-back\BbqMicBack\obj\Release\BbqMicBack.csproj
 C:\Users\User\Source\Repos\bbq-mic-back\BbqMicBack\obj\Release\BbqMicBack.dll
 C:\Users\User\Source\Repos\bbq-mic-back\BbqMicBack\obj\Release\BbqMicBack.pdb
 C:\Users\User\Source\Repos\bbq-mic-back\BbqMicBack\obj\Release\BbqMicBack.csprojResolveAssemblyReference.cache
+C:\Users\User\Source\Repos\bbq-mic-back\BbqMicBack\bin\System.Web.Cors.dll
+C:\Users\User\Source\Repos\bbq-mic-back\BbqMicBack\bin\System.Web.Http.Cors.dll
+C:\Users\User\Source\Repos\bbq-mic-back\BbqMicBack\bin\System.Web.Http.Cors.xml
