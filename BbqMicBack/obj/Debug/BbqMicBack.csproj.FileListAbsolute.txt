@@ -168,4 +168,3 @@ C:\Users\User\Source\Repos\bbq-mic-back\BbqMicBack\obj\Debug\BbqMicBack.csproj.G
 C:\Users\User\source\repos\bbq-mic-back\BbqMicBack\bin\System.Web.Cors.dll
 C:\Users\User\source\repos\bbq-mic-back\BbqMicBack\bin\System.Web.Http.Cors.dll
 C:\Users\User\source\repos\bbq-mic-back\BbqMicBack\bin\System.Web.Http.Cors.xml
-C:\Users\User\Source\Repos\bbq-mic-back\BbqMicBack\obj\Debug\BbqMicBack.csprojAssemblyReference.cache

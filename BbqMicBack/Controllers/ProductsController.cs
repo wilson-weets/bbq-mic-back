@@ -24,6 +24,7 @@ namespace BbqMicBack.Controllers
 
         [HttpGet]
         [ResponseType(typeof(string))]
+        [Route("api/Products/GetSlackIds/{productId}")]
         public IHttpActionResult GetSlackIds(int productId)
         {
             List<string> slackIds;
