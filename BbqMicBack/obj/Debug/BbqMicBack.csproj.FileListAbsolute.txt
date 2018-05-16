@@ -166,3 +166,6 @@ C:\Users\User\Source\Repos\bbq-mic-back\BbqMicBack\obj\Debug\BbqMicBack.dll
 C:\Users\User\Source\Repos\bbq-mic-back\BbqMicBack\obj\Debug\BbqMicBack.pdb
 C:\Users\User\Source\Repos\bbq-mic-back\BbqMicBack\obj\Debug\BbqMicBack.Migrations.InitialCreate.resources
 C:\Users\User\Source\Repos\bbq-mic-back\BbqMicBack\obj\Debug\BbqMicBack.csproj.GenerateResource.cache
+C:\Users\User\source\repos\bbq-mic-back\BbqMicBack\bin\System.Web.Cors.dll
+C:\Users\User\source\repos\bbq-mic-back\BbqMicBack\bin\System.Web.Http.Cors.dll
+C:\Users\User\source\repos\bbq-mic-back\BbqMicBack\bin\System.Web.Http.Cors.xml
