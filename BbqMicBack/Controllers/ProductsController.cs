@@ -22,6 +22,7 @@ namespace BbqMicBack.Controllers
             return db.Needs;
         }
 
+        [HttpGet]
         [ResponseType(typeof(string))]
         public IHttpActionResult GetSlackIds(int productId)
         {
