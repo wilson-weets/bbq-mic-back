@@ -19,10 +19,10 @@ namespace BbqMicBack.Controllers
         [ResponseType(typeof(int))]
         public IHttpActionResult GetTotalQuantity(int productId)
         {
-            if(db.Supplies.Any())
-                return Ok(db.Supplies.Where(s => s.Product.Id == productId).Select(p => p.Quantity).Sum());
-
-            return Ok(0);
+            return Ok(db.Supplies
+                .Where(s => s.Product.Id == productId)
+                .Select(s => (int?)s.Quantity)
+                .Sum() ?? 0);
         }
     }
 }
