@@ -22,6 +22,20 @@ namespace BbqMicBack.Controllers
             return db.Needs;
         }
 
+        [ResponseType(typeof(string))]
+        public IHttpActionResult GetSlackIds(int productId)
+        {
+            List<string> slackIds;
+            if (db.Supplies.Any())
+            {
+                slackIds = db.Supplies.Where(s => s.Product.Id == productId).Select(s => s.SlackId).ToList();
+
+                return Ok(slackIds);
+            }
+
+            return NotFound();
+        }
+
         [ResponseType(typeof(Product))]
         public IHttpActionResult PostProduct(Product product)
         {
